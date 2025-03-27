@@ -14,9 +14,12 @@ use App\Http\Controllers\ProdukController;
 |
 */
 
-Route::get('/produk', [ProdukController::class, 'tampil']);
-Route::get('/produk/create', [ProdukController::class, 'create']);
-Route::get('/produk/tampil', [ProdukController::class, 'tampil']);
+Route::get('/produk/tampil', [ProdukController::class, 'tampil'])->name('produk.tampil');
+Route::get('produk/create', [ProdukController::class, 'create'])->name('produk.create');
+Route::post('produk/tampil', [ProdukController::class, 'store'])->name('produk.store');
+Route::get('produk/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+Route::put('produk/tampil/{produk}', [ProdukController::class, 'update'])->name('produk.update');
+Route::delete('produk/tampil/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 
 
 

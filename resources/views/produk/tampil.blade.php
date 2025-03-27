@@ -43,29 +43,23 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="align-middle">
-                      <td>1.</td>
-                      <td>Update software</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <a href="" class="btn btn-warning">Edit</a>
-                        <a href="" class="btn btn-warning">Hapus</a>
+                    @foreach ($produk as $index => $produk)
+                    <tr>
+                      <td class="text-center">{{ $loop->iteration }}</td>
+                      <td class="text-center">{{ $produk->nama_produk }}</td>
+                      <td class="text-center">{{ $produk->kategori }}</td>
+                      <td class="text-center">Rp {{ number_format($produk->harga, 0, ',', '.') }}</td>
+                      <td class="text-center">{{ $produk->stok }}</td>
+                      <td class="text-center">
+                          <a href="{{ route('produk.edit', $produk->id) }}" class="btn btn-warning">Edit</a>
+                          <form action="{{ route('produk.destroy', $produk->id) }}" method="POST" style="display:inline;">
+                              @csrf @method('DELETE')
+                              <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin hapus?')">Hapus</button>
+                          </form>
                       </td>
                     </tr>
-                    <tr class="align-middle">
-                      <td>2.</td>
-                      <td>Clean database</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td>
-                        <a href="" class="btn btn-warning">Edit</a>
-                        <a href="" class="btn btn-warning">Hapus</a>
-                      </td>
-                    </tr>
-                  </tbody>
+                    @endforeach
+                </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
