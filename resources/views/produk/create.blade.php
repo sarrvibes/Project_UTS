@@ -34,7 +34,10 @@
               <div class="card-header"><div class="card-title">Tambah Produk</div></div>
               <!--end::Header-->
               <!--begin::Form-->
-              <form>
+
+              <form action="{{ route('produk.store') }}" method="POST">
+                @csrf
+
                 <!--begin::Body-->
                 <div class="card-body">
                   <div class="mb-3">
@@ -43,19 +46,25 @@
                       type="text"
                       class="form-control"
                       id="produk"
+
+                      name="nama_produk"
+
                     />
                   </div>
                   <div class="mb-3">
                     <label for="kategori" class="form-label">Kategori</label>
-                    <input type="text" class="form-control" id="kategori" />
+
+
+                    <input type="text" class="form-control" id="kategori" name="kategori" />
                   </div>
                   <div class="mb-3">
                     <label for="Harga" class="form-label">Harga</label>
-                    <input type="number" class="form-control" id="Harga" />
+                    <input type="number" class="form-control" id="Harga" name="harga" />
                   </div>
                   <div class="mb-3">
                     <label for="Stok" class="form-label">Stok</label>
-                    <input type="number" class="form-control" id="Stok" />
+                    <input type="number" class="form-control" id="Stok" name="stok" />
+
                   </div>
                 </div>
                 <!--end::Body-->
